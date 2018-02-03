@@ -62,15 +62,15 @@
 							<nav id="navigation" class="navbar-nav">
 								<ul class="nav">
 									<li class="active">
-										<a href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
+										<a href="#slider" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
 									</li>
-									<li><a href="#about" data-toggle="collapse" data-target=".navbar-collapse.in">About</a></li>
-									<li><a href="#services" data-toggle="collapse" data-target=".navbar-collapse.in">Services</a></li>
+									<li><a href="#about" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">About</a></li>
+									<li><a href="#services" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Services</a></li>
 									
 									<li>
-										<a href="#casestudies" data-toggle="collapse" data-target=".navbar-collapse.in">Case studies</a>
+										<a href="#casestudies" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Case studies</a>
 									</li>
-									<li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a></li>
+									<li><a href="#contact" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a></li>
 									<li><a href="http://www.facebook.com/" data-toggle="collapse" data-target=".navbar-collapse.in">Facebook</a></li>
 
 								</ul>
@@ -82,7 +82,7 @@
 		</header><!-- /header -->
 
 		<!-- Slider -->
-		<section class="revolution-slider">
+		<section id="slider" class="revolution-slider">
 				<div class="tp-banner-container">
 					<div class="tp-banner" >
 						<ul>
@@ -854,4 +854,21 @@
 
 </body>
 
+<script>
+//Simple "smooth-scroll" class on anchor tags
+//Add class="smooth-scroll" on anchor tags
+$('a.smooth-scroll[href*="#"]:not([href="#"])').click(function() {
+  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top
+      }, 1000);
+      return false;
+    }
+  }
+}); 
+</script>
 </html>
+
