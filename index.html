@@ -4,9 +4,7 @@
 	<meta charset="utf-8">
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<meta name="author" content="DevSolutions">
-	<meta name="description" content="Best Premium HTML5 Theme">
-
+	
 	<title>Dr. Hazem Abbas</title>
 
 	<!-- Fonts Google Roboto & Glego, Glyphicons, Font Awesome, AND Icons  -->
@@ -38,7 +36,7 @@
 	<link rel="stylesheet" id="skin-color" href="assets/css/blue.css">
 
 </head>
-<body>
+<body data-spy="scroll" data-target="navigation">
 
 	<!-- Preloader Animation -->
 	<div class="site-loader"></div>
@@ -62,16 +60,16 @@
 							<nav id="navigation" class="navbar-nav">
 								<ul class="nav">
 									<li class="active">
-										<a href="#slider" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
+										<a href="#slider" class="smooth-scroll">Home</a>
 									</li>
-									<li><a href="#about" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">About</a></li>
-									<li><a href="#services" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Services</a></li>
+									<li><a href="#about" class="smooth-scroll">About</a></li>
+									<li><a href="#services" class="smooth-scroll">Services</a></li>
 									
 									<li>
-										<a href="#casestudies" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Case studies</a>
+										<a href="#casestudies" class="smooth-scroll">Case studies</a>
 									</li>
-									<li><a href="#contact" class="smooth-scroll" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a></li>
-									<li><a href="http://www.facebook.com/" data-toggle="collapse" data-target=".navbar-collapse.in">Facebook</a></li>
+									<li><a href="#contact" class="smooth-scroll">Contact</a></li>
+									<li><a href="http://www.facebook.com/">Facebook</a></li>
 
 								</ul>
 							</nav>
@@ -855,20 +853,30 @@
 </body>
 
 <script>
-//Simple "smooth-scroll" class on anchor tags
-//Add class="smooth-scroll" on anchor tags
-$('a.smooth-scroll[href*="#"]:not([href="#"])').click(function() {
-  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    var target = $(this.hash);
-    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    if (target.length) {
-      $('html, body').animate({
-        scrollTop: target.offset().top
-      }, 1000);
-      return false;
+//https://github.com/BlackrockDigital/startbootstrap-scrolling-nav
+(function($) {
+  "use strict"; // Start of use strict
+
+  // Smooth scrolling using jQuery easing
+  $('a.smooth-scroll[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: (target.offset().top - 54)
+        }, 1000, "easeInOutExpo");
+        return false;
+      }
     }
-  }
-}); 
+  });
+
+  // Closes responsive menu when a scroll trigger link is clicked
+  $('.smooth-scroll').click(function() {
+    $('.navbar-collapse').collapse('hide');
+  });
+
+})(jQuery); // End of use strict
 </script>
 </html>
 
